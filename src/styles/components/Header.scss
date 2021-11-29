@@ -1,0 +1,38 @@
+
+
+.header {
+  background-color: beige;
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+
+  &__heading {
+    font-size: 3.2rem;
+    font-weight: 700;
+    letter-spacing: -.1rem;
+    color: var(--blue-dark-2);
+    margin-bottom: .8rem;
+  }
+
+  &__total {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--gray2);
+  }
+
+  &__box--2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+  }
+}
+
+
+
+
+
+
+
+
+

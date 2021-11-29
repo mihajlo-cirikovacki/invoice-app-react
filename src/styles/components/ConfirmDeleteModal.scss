@@ -1,0 +1,75 @@
+@use '../utilities' as *;
+
+
+.delete {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background-color: rgba(0,0,0,.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__info {
+    width: 33.33%;
+    padding: 4.8rem;
+    border-radius: .8rem;
+    background-color: var(--white);
+    box-shadow: 0 1rem 1rem -1rem rgba(72, 84, 159, 0.100397);
+
+    & > h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 1.3rem;
+      letter-spacing: -.05rem;
+      color: var(--blue-dark-2);
+    }
+    
+    & > p {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 1.6rem;
+      letter-spacing: -.025rem;
+      color: var(--gray2);
+      line-height: 2.2rem;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: .8rem;
+    justify-content: end;
+
+    & > button {
+      @extend %btn;
+      padding: 1.7rem 2.64rem;
+      border-radius: 2.4rem;
+    }
+
+    &--cancel {
+      background-color: var(--blue-light);
+      color: var(--blue-light2);
+    }
+    &--delete {
+      background-color: var(--red);
+      color: var(--white);
+    } 
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,252 @@
+@use '../utilities' as *;
+
+// New Invoice container:
+.new-invoice {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5555;
+  background-color: rgba(0,0,0,.4); // Da promenim
+  overflow-y: scroll;
+
+  // === New Invoice Modal:
+  &__modal {
+    position: absolute;
+    top: 0;
+    left: 10.3rem;
+    width: 42.77%;
+    padding: 5.6rem;
+    min-height: 100vh;
+    background-color: var(--white);
+    border-radius: 0 2rem 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4.8rem;
+   
+  }
+
+  &__heading  {
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 3.2rem;
+    letter-spacing: -0.05rem;
+    // margin-bottom: 4.8rem;
+  }
+
+  &__heading-4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: -0.025rem;
+  }
+
+  &__heading-3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--gray3);
+    letter-spacing: -0.0375rem;
+  }
+
+  // === Container for Bill From and Bill To:
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+    
+    &--item-list-section {
+      gap: 1.6rem;
+    }
+  }
+
+  // === All labels:
+  &__label {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--blue-light2);
+    letter-spacing: -0.025rem;
+  }
+
+  // === Input box:
+  &__input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+
+    &--horizontal {
+      flex-direction: unset;
+    }
+  }
+
+  // === All inputs:
+  &__input {
+    padding: 1.6rem 0 1.6rem 2rem;
+    border: 1px solid #DFE3FA;
+    border-radius: .4rem;
+    font-family: inherit;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.025rem;
+    color: var(--blue-dark-2);
+    
+    &--small {
+      width: 15.2rem;
+    }
+
+    &--medium {
+      width: 24rem;
+    }
+
+    &--description::placeholder {
+      letter-spacing: -0.025rem;
+      opacity: 0.4;
+    }
+
+    &--num {
+      -webkit-appearance: none;
+
+      /* Firefox */
+      &[type=number] {
+        -moz-appearance: textfield;
+      }
+
+      &-qty {
+        padding: 1.6rem;
+        width: 4.6rem;
+      }
+
+      &-price{
+        padding: 1.6rem 2rem 1.6rem;
+        width: 10rem;
+      }
+    }
+
+    &--total {
+      padding: 1.6rem 1rem;
+      width: 8rem;
+      border: none;
+    }
+  }
+
+  // === Select:
+  &__select {
+    padding: 1.6rem 0 1.6rem 2rem;
+    width: 24rem;
+    border: 1px solid #DFE3FA;
+    background-color: var(--white);
+    appearance: none;
+    background-image: url('../../assets/icon-arrow-down.svg');
+    background-repeat: no-repeat;
+    background-position: 95%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.025rem;
+    color: var(--blue-dark-2);
+  }
+
+  &__titles {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 9rem;
+
+    & p:nth-of-type(2) {
+      margin-left: 6rem;
+    }
+
+    & p:nth-of-type(3) {
+      margin-left: -4rem;
+    }
+  }
+
+  &__price-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+  }
+
+  &__add-item-btn {
+    @extend %btn;
+    color: var(--blue-light2);
+    letter-spacing: -0.025rem;
+    padding: 1.6rem 0;
+    border-radius: 2.4rem;
+    background-color: var(--blue-light);
+    margin-top: .2rem;
+  }
+
+  &__price-item {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+  }
+
+  &__total {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--gray2);
+    margin-right: 3rem;
+  }
+
+  &__icon-delete {
+    cursor: pointer;
+
+    &:hover path { 
+      fill: var(--orange);
+    }
+  }
+
+  // === Submit Buttons:
+  &__btns-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    // Submit container:
+    & > div {
+      display: flex;
+      gap: .8rem;
+    }
+  }
+
+  &__btn-submit {
+    @extend %btn;
+    padding: 1.7rem 2.6rem;
+    border-radius: 2.4rem;
+    cursor: pointer;
+    
+    &--discard {
+      background-color: var(--blue-light);
+      color: var(--blue-light2);
+    }
+
+    &--draft {
+      background-color: var(--gray);
+      color: var(--gray2);
+    }
+
+    &--send {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+  }
+
+  &__btn-submit {
+    @extend %btn;
+  }
+}
+
+// === Helper:
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.disabled {
+  opacity: 0.3;
+}
+
+
+

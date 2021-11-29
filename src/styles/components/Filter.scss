@@ -1,0 +1,62 @@
+
+
+.filter {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  position: relative;
+ 
+  &__title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--blue-dark-2);
+  }
+
+  &__arrow-down {
+    width: 1.5rem;
+    height: 1rem;
+    cursor: pointer;
+  } 
+
+  &__options {
+    position: absolute;
+    top: 3rem;
+    left: -1.5rem; // MOzda kasnije korigujem...
+    padding: 2rem 3.2rem;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+    border-radius: 1rem;
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  &__checkbox {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    background-color: wheat; // Da promenim kasnije
+    cursor: pointer;
+  }
+
+  &__check-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+

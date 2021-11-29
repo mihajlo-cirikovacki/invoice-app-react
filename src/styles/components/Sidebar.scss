@@ -1,0 +1,51 @@
+
+.aside { // Da sredim kasnije.
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--gray);
+  z-index: 9999;
+  border-radius: 0 2rem 2rem 0;
+
+  &__logo-container {
+    width: 100%;
+    min-height: 10.3rem;
+    background-color: var(--primary-Light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 2rem 0 0;
+  }
+
+  &__logo path  {
+    height: 4rem;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__avatar {
+    width: 4rem;
+    border-radius: 50%;
+  }
+
+  &__avatar-container {
+    padding: 2.4rem 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+

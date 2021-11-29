@@ -1,0 +1,253 @@
+@use '../utilities' as *;
+
+
+.invoice-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 92.85%;
+  height: 92.85%;
+  z-index: 5555;
+}
+
+.invoice-container {
+  display: flex;
+  justify-content: center;
+  background-color: aquamarine;
+  padding: 6.4rem 0 5.4rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: -0.025rem;
+  color: var(--blue-light2);
+  background-color: var(--background);
+}
+
+.invoice-details {
+  width: 54.6%;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+// Nav
+.nav {
+  background-color: transparent;
+
+  &__button-back {
+    @extend %btn;
+    color: var(--blue-dark-2);
+    letter-spacing: -0.025rem;
+    margin-left: 2.3rem;
+    background-color: transparent;
+  }
+
+  & > div {
+    cursor: pointer;
+  }
+}
+
+// Header:
+.header {
+  padding: 2rem 3.2rem;
+  border-radius: .8rem;
+  background-color: #fff;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+
+  &__box-1 {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+
+    & > div {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      gap: .8rem;
+      background-color: var(--orange-light-op);
+      border-radius: .6rem;
+      padding: 1.3rem 1.65rem;
+      align-items: center;
+    }
+  }
+
+  // Status:
+  &__status {
+    
+    color: var(--orange-light);
+  }
+
+  &__circle {
+    width: .8rem;
+    height: .8rem;
+    border-radius: 100%;
+    margin-right: .5rem;
+    background-color: #33D69F;
+  }
+  
+  &__box-2 {
+    display: flex;
+    gap: .8rem;
+  }
+
+  // Buttons:
+  &__button-edit,
+  &__button-delete,
+  &__button-paid {
+    @extend %btn;
+    border-radius: 2.4rem;
+    letter-spacing: -0.025rem;
+    color: var(--white);
+  }
+
+  &__button-edit {
+    padding: 1.7rem 2.5rem;
+    background-color: var(--blue-light);
+    color: var(--blue-light2);
+  }
+
+  &__button-delete {
+    padding: 0 2.59rem;
+    background-color: var(--red);
+  }
+
+  &__button-paid {
+    padding: 0 2.85rem;
+    background-color: var(--primary);
+  }
+}
+
+// Main:
+.main-details {
+  padding: 4.8rem;
+  border-radius: .8rem;
+  background-color: #fff;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+
+  // ==== INFO:
+  &__info {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 2.1rem;
+    line-height: 1.8rem;
+
+    // Boxes:
+    &-box-1 {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    &-box-2 {
+      grid-column: 4;
+      grid-row: 1;
+      text-align: right;
+    }
+    &-box-3 {
+      grid-column: 1;
+      grid-row: 2;
+    }
+    &-box-4 {
+      grid-column: 2;
+      grid-row: 2;
+      justify-self: center;
+    }
+    &-box-5 {
+      grid-column: 3 / span 2;
+      grid-row: 2;
+      justify-self: center;
+    }
+
+    &-hastag {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gray2);
+    }
+
+    &-client-id {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.08rem;
+      color: var(--blue-dark-2);
+      margin-bottom: .8rem;
+    }
+
+    &-address-from,
+    &-client-address {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+
+.main-details {
+  // ==== Calculated:
+  &__calculated {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background-color: var(--blue-light);
+    padding: 3.2rem 3.2rem 2.4rem;
+    margin-top: 4.5rem;
+    border-radius: .8rem;
+    row-gap: 4rem;
+    
+    &-box-2,
+    &-box-3,
+    &-box-4 {
+      justify-self: end;
+      display: flex;
+      flex-direction: column;
+      gap: 3.2rem;
+    }
+
+    &-box-1 {
+      display: flex;
+      flex-direction: column;
+      gap: 3.2rem;
+    }
+  }
+
+  // ==== Amount Due:
+  &__amount-due {
+    padding: 3.1rem 3.2rem;
+    color: var(--white);
+    background: #373B53;
+    border-radius: 0 0 .8rem .8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &-total {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.05rem;
+    }
+  }
+}
+
+// ===== Helpers:
+.flex-horizontal {
+  display: flex;
+}
+
+// Text:
+.bold-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--blue-dark-2);
+  margin-top: 1.2rem;
+}
+
+.bold-text2 {
+  font-weight: 700;
+  color: var(--blue-dark-2);
+}
+
+// Margins:
+.margin-top8 {
+  margin-top: .8rem;
+}
+
+.margin-top32 {
+  margin-top: 3.2rem;
+}
+
+

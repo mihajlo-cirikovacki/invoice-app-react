@@ -1,0 +1,42 @@
+@use '../utilities' as *;
+
+.btn {
+  @extend %btn;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  padding: .8rem;
+  padding-right: 1.5rem;
+  border-radius: 2.4rem;
+  background-color: var(--primary-Light);
+  color: var(--white);
+  letter-spacing: -.025rem;
+  
+  &__plus-box {
+    padding: 1.12rem;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__img {
+    width: 1rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

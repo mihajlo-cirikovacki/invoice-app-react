@@ -1,0 +1,50 @@
+
+
+.status__button {
+  padding: 1.3rem 2.05rem;
+  border-radius: .6rem;
+  font-weight: 700;
+  margin-right: 2rem;
+  
+  &--pending {
+    background-color: var(--orange-light-op);
+    opacity: 0.6;
+    color: var(--orange);
+  }
+
+  &--paid {
+    background-color: var(--green-light-op);
+    opacity: 0.6;
+    color: var(--green);
+  }
+
+  &-circle {
+    display: inline-block;
+    width: .8rem;
+    height: .8rem;
+    border-radius: 100%;
+    margin-right: .5rem;
+    
+    &--pending {
+      background-color: var(--orange-light);
+      
+    }
+    &--paid {
+      background-color: var(--green);
+      
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
