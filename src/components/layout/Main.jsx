@@ -4,6 +4,7 @@ import Header from "./Header";
 import Card from "../Card";
 // Import Style:
 import '../../styles/components/Main.scss';
+import emptyImg from '../../assets/illustration-empty.svg';
 
 // ==== Helper: Get Payment Due:
 const getDueDate = function(date, paymentTerm) {
@@ -45,9 +46,34 @@ const Main = () => {
           dataArr.push(dataObj);
         };
         
+        // IF array is empty:
+        if (dataArr.length === 0) throw new Error('Emtpy, pls add cards. 😉');
+
         setData(dataArr);
+      }).catch(err => {
+        console.log(`${err}, 🔥`)
       });
   }, []);
+
+
+
+  // Check if there is data:
+  if (loadedData.length === 0) {
+    return (
+      <main className='main'>
+        <section className='invoice'>
+          <Header totalCards={loadedData.length} />
+          <div className='main__empty-container'>  
+            <img src={emptyImg} alt="Empty Cards"/>
+            <div className='main__empty-content'>
+              <h2>There is nothing here</h2>
+              <p> Create an invoice by clicking the <br /> New Invoice button and get started</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    )
+  }
 
   return (
     <main className='main'>

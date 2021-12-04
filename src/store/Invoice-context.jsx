@@ -16,7 +16,7 @@ const InvoiceContext = createContext({
 export const InvoiceContextProvider = (props) => {
   // ===== State:
   const [invoices, setInvoice] = useState([]);
-  console.log(invoices, 'Unutar Context-a');
+  // console.log(invoices, 'Unutar Context-a');
   // ===== Functions:
 
   // Add Invoice:

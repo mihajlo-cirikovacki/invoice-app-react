@@ -3,6 +3,30 @@
   display: flex;
   justify-content: center;
   padding-top: 7.2rem;
+
+  &__empty-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6.4rem;
+    margin-top: 14.1rem;
+  }
+
+  &__empty-content {
+    text-align: center;
+    font-weight: 700;
+
+    & h2 {
+      font-size: 2rem;
+      color: var(--blue-dark-2);
+      margin-bottom: 2.4rem;
+    }
+    
+    & p {
+      font-size: 1.2rem;
+      color: var(--gray2);
+    }
+  }
 }
 
 .invoice {
