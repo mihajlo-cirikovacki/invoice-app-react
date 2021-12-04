@@ -37,7 +37,7 @@ const Main = () => {
     
         for (const key in data) {
           const dataObj = {
-            keyFirebse: key,
+            keyFirebase: key,
             // Calculated Payment Due:
             duoDate: getDueDate(data[key].clientInvoiceDate, data[key].clientPaymentTerm),
             ...data[key],

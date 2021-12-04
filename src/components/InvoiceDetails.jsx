@@ -1,5 +1,5 @@
-import { useState } from 'react/cjs/react.development';
-import db from '../db';
+import { useState } from 'react';
+import {db, ref, remove} from '../db';
 // Import Styles:
 import '../styles/components/InvoiceDetails.scss';
 
@@ -24,7 +24,7 @@ const formatDate = function(date) {
 
 // Invoice Details Page:
 const InvoiceDetails = ({closeModal, loadedData, total, setPaidButton, statusPending}) => {
-  // === Context:
+  // === State:
   const [deleteModalOpen, setDeleteModal] = useState(false);
  
   //  === Delete Modal:
@@ -38,10 +38,10 @@ const InvoiceDetails = ({closeModal, loadedData, total, setPaidButton, statusPen
 
   // === Delete invoice:
   const deleteInvoice = function() {
-    db.database().ref(`inputData/${loadedData.keyFirebse}`).remove();
+    // Remove from Firebase:
+    remove(ref(db, `inputData/${loadedData.keyFirebase}`)).then(() => closeModal());
   }
 
-  
   return (
     <section>
     <section className='invoice-modal'>
@@ -56,8 +56,9 @@ const InvoiceDetails = ({closeModal, loadedData, total, setPaidButton, statusPen
           <header className="header">
             <div className="header__box-1">
               <p>Status</p>
-              {/* <StatusButton /> */}
-                {statusPending ? <StatusButton setPaid={true}/> : <StatusButton setPaid={false}/>}
+                {/* {statusPending ? <StatusButton setPaid={true}/> : <StatusButton setPaid={false} />} */}
+                {loadedData.status === 'pending' && statusPending ? <StatusButton setPaid={true}/> : <StatusButton setPaid={false}/>}
+
             </div>
             <div className="header__box-2">
               <button className="header__button-edit">Edit</button>
@@ -117,7 +118,7 @@ const InvoiceDetails = ({closeModal, loadedData, total, setPaidButton, statusPen
         </div>
       </section>
     </section>
-      {deleteModalOpen && <ConfirmDeleteModal closeModal={closeDeleteModal} />}
+      {deleteModalOpen && <ConfirmDeleteModal clientId={loadedData.clientId} closeModal={closeDeleteModal} deleteInvoice={deleteInvoice} />}
     </section>
   );
 }

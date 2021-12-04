@@ -4,9 +4,10 @@ import { useEffect, useReducer, useState } from 'react';
 import '../styles/components/NewInvoiceModal.scss';
 
 // ==== Helper: Generate random ID:
-const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+const words ='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const num = '0123456789';
 
-function generateString(length) {
+function generateString(length, characters) {
   let result = '';
   const charactersLength = characters.length;
   for ( let i = 0; i < length; i++ ) {
@@ -105,6 +106,9 @@ const NewInvoiceModal = ({closeModal}) => {
   const [liInfoArray, setLiInfoArray] = useState([]);
   // console.log(liInfoArray, 'Array za slanje')
 
+  // === Status:
+  const [status, setDraft] = useState('pending');
+
   // === Functons:
   const setLiInfoArrayHandler = function(data) {
     if (Object.values(data).every(value => value !== '' && value !== 0)) {
@@ -141,6 +145,11 @@ const NewInvoiceModal = ({closeModal}) => {
     const id = liEl.dataset.id;
     setLiPriceItem(prevLi => prevLi.filter(liItem => liItem.key !== id));
   }
+
+  // Set Status Draft:
+  const setStatusDraft = function() {
+    setDraft('draft')
+  }
   
   // ===== Post data on Firebase:
   const sendDataToFirebase = function() {
@@ -149,7 +158,7 @@ const NewInvoiceModal = ({closeModal}) => {
       'https://invoice-app-react-a9ade-default-rtdb.firebaseio.com/inputData.json',
       {
         method: 'POST',
-        body: JSON.stringify({...inputObj, liInfoArray: liInfoArray || null, clientId: generateString(6)}),
+        body: JSON.stringify({...inputObj, liInfoArray: liInfoArray || null, clientId: `${generateString(2, words)}${generateString(4, num)}`, status: status,}),
         headers: {
           'Content-type': 'application/json'
         }
@@ -256,7 +265,7 @@ const NewInvoiceModal = ({closeModal}) => {
         <section className="new-invoice__btns-container">
           <button className="new-invoice__btn-submit new-invoice__btn-submit--discard" onClick={closeModal}>Discard</button>
           <div>
-            <button className="new-invoice__btn-submit new-invoice__btn-submit--draft">Save as Draft</button>
+            <button className="new-invoice__btn-submit new-invoice__btn-submit--draft" onClick={setStatusDraft}>Save as Draft</button>
             {/* Check inputs: */}
             <button className={validateState(inputObj) ? "new-invoice__btn-submit new-invoice__btn-submit--send disabled" : "new-invoice__btn-submit new-invoice__btn-submit--send"} onClick={validateState(inputObj) ? null : sendDataToFirebase}>
               Save & Send
