@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--gray);
+  background-color: var(--background-aside);
   z-index: 9999;
   border-radius: 0 2rem 2rem 0;
 
@@ -20,6 +20,10 @@
 
   &__logo path  {
     height: 4rem;
+  }
+
+  &__btn-mode {
+    cursor: pointer;
   }
 
   &__container {

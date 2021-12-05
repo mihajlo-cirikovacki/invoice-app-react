@@ -9,8 +9,10 @@ import StatusButton from './StatusButton';
 
 // ===== Helper funck.
 const formatDate = function(date) {
+  // Check for date:
+  if(!date) return;
+  
   const dateForFormat = new Date(date);
-
   const options = {
     year: 'numeric',
     month: 'short',

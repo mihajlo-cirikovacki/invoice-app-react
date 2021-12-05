@@ -51,7 +51,7 @@
 .header {
   padding: 2rem 3.2rem;
   border-radius: .8rem;
-  background-color: #fff;
+  background-color: var(--background-card);
   box-shadow: 0 1rem 1rem -1rem rgba(72, 84, 159, 0.100397);
   display: flex;
   justify-content: space-between;
@@ -123,7 +123,7 @@
 .main-details {
   padding: 4.8rem;
   border-radius: .8rem;
-  background-color: #fff;
+  background-color: var(--background-card);
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
 
   // ==== INFO:
@@ -211,7 +211,7 @@
   &__amount-due {
     padding: 3.1rem 3.2rem;
     color: var(--white);
-    background: #373B53;
+    background: var(--gray);
     border-radius: 0 0 .8rem .8rem;
     display: flex;
     align-items: center;

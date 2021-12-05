@@ -10,7 +10,7 @@
   
   &--pending {
     background-color: var(--orange-light-op);
-    opacity: 0.6;
+    // opacity: 0.6;
     color: var(--orange);
   }
 
@@ -28,7 +28,7 @@
     margin-right: .5rem;
     
     &--pending {
-      background-color: var(--orange-light);
+      background-color: var(--orange);
       
     }
     &--paid {

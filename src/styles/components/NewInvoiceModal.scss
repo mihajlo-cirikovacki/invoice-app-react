@@ -19,7 +19,7 @@
     width: 42.77%;
     padding: 5.6rem;
     min-height: 100vh;
-    background-color: var(--white);
+    background-color: var(--background-modal);
     border-radius: 0 2rem 2rem 0;
     display: flex;
     flex-direction: column;
@@ -33,6 +33,7 @@
     line-height: 3.2rem;
     letter-spacing: -0.05rem;
     // margin-bottom: 4.8rem;
+    color: var(--blue-dark-2);
   }
 
   &__heading-4 {
@@ -82,12 +83,13 @@
   // === All inputs:
   &__input {
     padding: 1.6rem 0 1.6rem 2rem;
-    border: 1px solid #DFE3FA;
+    border: 1px solid var(--input-border);
     border-radius: .4rem;
     font-family: inherit;
     font-size: 1.2rem;
     font-weight: 700;
     letter-spacing: -0.025rem;
+    background-color: var(--background-input-color);
     color: var(--blue-dark-2);
     
     &--small {
@@ -133,8 +135,8 @@
   &__select {
     padding: 1.6rem 0 1.6rem 2rem;
     width: 24rem;
-    border: 1px solid #DFE3FA;
-    background-color: var(--white);
+    border: 1px solid var(--input-border);
+    background-color: var(--background-input-color);
     appearance: none;
     background-image: url('../../assets/icon-arrow-down.svg');
     background-repeat: no-repeat;
@@ -217,13 +219,13 @@
     cursor: pointer;
     
     &--discard {
-      background-color: var(--blue-light);
-      color: var(--blue-light2);
+      background-color: var(--background-btn-discard);
+      color: var(--btn-discard);
     }
 
     &--draft {
-      background-color: var(--gray);
-      color: var(--gray2);
+      background-color: var(--background-btn-draft);
+      color: var(--btn-draft);
     }
 
     &--send {
@@ -248,5 +250,10 @@
   opacity: 0.3;
 }
 
-
+.message-request {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--red);
+  margin-top: 1.6rem;
+}
 

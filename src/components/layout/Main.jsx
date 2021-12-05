@@ -9,6 +9,9 @@ import emptyImg from '../../assets/illustration-empty.svg';
 // ==== Helper: Get Payment Due:
 const getDueDate = function(date, paymentTerm) {
   const clientInvoiceDate = new Date(date);
+  // Check for paymentTerm:
+  if(!paymentTerm) return date;
+  
   const numOfDays = paymentTerm === '' ? 1 : +paymentTerm;
   const dueDate1 = clientInvoiceDate.setDate(clientInvoiceDate.getDate() + numOfDays);
   const dueDate = new Date(dueDate1);
@@ -19,6 +22,7 @@ const getDueDate = function(date, paymentTerm) {
     month: 'short',
     day:'2-digit',
   }
+  console.log(paymentTerm)
   const formatedDueDate = new Intl.DateTimeFormat(local, options).format(dueDate);
   return formatedDueDate;
 }
@@ -82,7 +86,7 @@ const Main = () => {
         <div className="invoice__cards">
           {loadedData.map(data => {
             // Get sum totals:
-            const total = data.liInfoArray.reduce((acc, curr) => acc += curr.total, 0);
+            const total =  data.liInfoArray ? data.liInfoArray.reduce((acc, curr) => acc += curr.total, 0) : data.liInfoArray = 0;
             
             return (
               <Card 

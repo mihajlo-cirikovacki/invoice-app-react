@@ -2,6 +2,7 @@
 import { useEffect, useReducer, useState } from 'react';
 // Import Style:
 import '../styles/components/NewInvoiceModal.scss';
+import NewInvoiceModalLiItem from './NewInvoiceModalLiItem';
 
 // ==== Helper: Generate random ID:
 const words ='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -16,60 +17,7 @@ function generateString(length, characters) {
   return result;
 };
 
-
-// Da prebacim u drugi file i importujem.
-const LiPriceItem = ({deleteItem, id, setLiInfoArrayHandler}) => {
-  // ==== State:
-  const [data, setData] = useState({
-    itemName: '',
-    qty: '',
-    price: '',
-    total: '',
-  });
-
-  // ==== Functions:
-
-  // OnChange handler:
-  function onChange(e) {
-    const value = e.target.value;
-    setData({
-      ...data,
-      [e.target.name]: value,
-    });
-  }
-
-  // Set TotaL:
-  useEffect(() => {
-    const qtyNum = +data.qty;
-    const priceNum = +data.price;
-    const totalNum = qtyNum * priceNum;
-    // Set total:
-    setData({...data, total: totalNum})
-    // Set data:
-  },[data.qty, data.price])
-
- 
-  // Send data object if is full:
-  useEffect(() => {
-    setLiInfoArrayHandler(data);
-  },[Object.values(data).every(value => value !== '' && value !== 0)]);
-  
-
-  return (
-    <li className="new-invoice__price-item" data-id={id}>
-      <input type="text" name="itemName" className="new-invoice__input" onChange={onChange} />
-      <input type="number" name="qty" min="0" className="new-invoice__input new-invoice__input--num new-invoice__input--num-qty" onChange={onChange} />
-      <input type="number" name="price" min="0" className="new-invoice__input new-invoice__input--num new-invoice__input--num-price" onChange={onChange}/>
-      {/* <p className="new-invoice__total" name="total">156.00</p> */}
-      <input type="text" name="total" className="new-invoice__input new-invoice__input--total" value={data.total + ''} />
-      <div onClick={deleteItem}>
-          <svg className="new-invoice__icon-delete" width="13" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M11.583 3.556v10.666c0 .982-.795 1.778-1.777 1.778H2.694a1.777 1.777 0 01-1.777-1.778V3.556h10.666zM8.473 0l.888.889h3.111v1.778H.028V.889h3.11L4.029 0h4.444z" fill="#888EB0" fill-rule="nonzero"/></svg>
-      </div>
-    </li>
-  )
-}
-
-
+// === Initial State:
 const initialState = {
   // Bill From:
   addressFrom: '',
@@ -126,17 +74,17 @@ const NewInvoiceModal = ({closeModal}) => {
   }
 
   // === Validate state:
-  const validateState = function(inputObj) {
-    console.log(inputObj)
-    const values = Object.values(inputObj); 
-
-    if (values.some(value => value === '')) return true
-       else return false;
+  const validateState = function() {
+    const values = Object.values(inputObj);
+    // console.log(inputObj)
+    // Check inputs and PriceItem Arr:
+    if (values.includes('') || liPriceItem.length === 0 ) return true
+      else return false;
   }
 
   // Render Price list:
   const addPriceLiItem = function() {
-    setLiPriceItem(liPriceItem.concat(<LiPriceItem deleteItem={deleteItem} id={liPriceItem.length} key={liPriceItem.length} onChange={onChange} setLiInfoArrayHandler={setLiInfoArrayHandler}/>));
+    setLiPriceItem(liPriceItem.concat(<NewInvoiceModalLiItem deleteItem={deleteItem} id={liPriceItem.length} key={liPriceItem.length} onChange={onChange} setLiInfoArrayHandler={setLiInfoArrayHandler}/>));
   };
 
   // Delete Price List:  
@@ -146,19 +94,18 @@ const NewInvoiceModal = ({closeModal}) => {
     setLiPriceItem(prevLi => prevLi.filter(liItem => liItem.key !== id));
   }
 
-  // Set Status Draft:
-  const setStatusDraft = function() {
-    setDraft('draft')
+  const sendDraftToFirebase = function() {
+    setDraft('draft');
+    sendDataToFirebase(); 
   }
   
   // ===== Post data on Firebase:
-  const sendDataToFirebase = function() {
-
+  function sendDataToFirebase() {
     fetch(
       'https://invoice-app-react-a9ade-default-rtdb.firebaseio.com/inputData.json',
       {
         method: 'POST',
-        body: JSON.stringify({...inputObj, liInfoArray: liInfoArray || null, clientId: `${generateString(2, words)}${generateString(4, num)}`, status: status,}),
+        body: JSON.stringify({...inputObj, liInfoArray, clientId: `${generateString(2, words)}${generateString(4, num)}`, status: status,}),
         headers: {
           'Content-type': 'application/json'
         }
@@ -261,13 +208,16 @@ const NewInvoiceModal = ({closeModal}) => {
             {liPriceItem}
           </ul>
           <button className="new-invoice__add-item-btn"  onClick={addPriceLiItem}>+ Add New Item</button>
+          {/* Message */}
+          {validateState() ? <div className="message-request"><p>- All fields must be added</p><p>- An item must be added</p></div> : ''}
         </section>
         <section className="new-invoice__btns-container">
           <button className="new-invoice__btn-submit new-invoice__btn-submit--discard" onClick={closeModal}>Discard</button>
           <div>
-            <button className="new-invoice__btn-submit new-invoice__btn-submit--draft" onClick={setStatusDraft}>Save as Draft</button>
+            <button className="new-invoice__btn-submit new-invoice__btn-submit--draft" onClick={sendDraftToFirebase}>Save as Draft</button>
             {/* Check inputs: */}
-            <button className={validateState(inputObj) ? "new-invoice__btn-submit new-invoice__btn-submit--send disabled" : "new-invoice__btn-submit new-invoice__btn-submit--send"} onClick={validateState(inputObj) ? null : sendDataToFirebase}>
+            <button className={validateState() ? "new-invoice__btn-submit new-invoice__btn-submit--send disabled" 
+              : "new-invoice__btn-submit new-invoice__btn-submit--send"} onClick={validateState() ? null : sendDataToFirebase}>
               Save & Send
             </button> 
             {/* <button className= "new-invoice__btn-submit new-invoice__btn-submit--send" onClick={sendDataToFirebase}>
