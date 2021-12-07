@@ -1,5 +1,6 @@
+@use '../utilities' as *;
 
-.aside { // Da sredim kasnije.
+.aside { 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -7,6 +8,13 @@
   background-color: var(--background-aside);
   z-index: 9999;
   border-radius: 0 2rem 2rem 0;
+
+  // Desktop-sm 1000
+  @include respond(desktop-sm) {
+    flex-direction: row;
+    border-radius: 0;
+    height: 8rem;
+  };
 
   &__logo-container {
     width: 100%;
@@ -16,14 +24,46 @@
     justify-content: center;
     align-items: center;
     border-radius: 0 2rem 0 0;
+
+    // Desktop-sm 1000
+    @include respond(desktop-sm) {
+      min-height: 100%;
+      width: 10.42%;
+      border-radius: 0 2rem 2rem 0;
+    };
+
+    // Tab-port 700
+    @include respond(tab-port-sm) {
+      width: 7.2rem;
+    };
   }
 
-  &__logo path  {
-    height: 4rem;
+  &__logo {
+    transform: scale(1.5);
+
+    // Desktop-sm 1000
+    @include respond(desktop-sm) {
+      transform: scale(1.13);
+    };
+
+    // Tab-port 700
+    @include respond(tab-port-sm) {
+      transform: scale(1);
+    };
   }
 
   &__btn-mode {
     cursor: pointer;
+
+    // Desktop-sm 1000
+    @include respond(desktop-sm) {
+      padding: 0 3.2rem;
+    };
+
+    // Tab-port 700
+    @include respond(tab-port-sm) {
+      padding: 0 2.4rem;
+    };
   }
 
   &__container {
@@ -31,6 +71,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    // Desktop-sm 1000
+    @include respond(desktop-sm) {
+      flex-direction: row;
+    };
   }
 
   &__avatar {
@@ -40,6 +85,16 @@
 
   &__avatar-container {
     padding: 2.4rem 0;
+
+    // Desktop-sm 1000
+    @include respond(desktop-sm) {
+      padding: 2.4rem 3.2rem;
+    };
+
+    // Tab-port 700
+    @include respond(tab-port-sm) {
+      padding: 2rem 2.4rem;
+    };
   }
 }
 

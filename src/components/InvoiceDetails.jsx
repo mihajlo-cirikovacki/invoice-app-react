@@ -41,7 +41,10 @@ const InvoiceDetails = ({closeModal, loadedData, total, setPaidButton, statusPen
   // === Delete invoice:
   const deleteInvoice = function() {
     // Remove from Firebase:
-    remove(ref(db, `inputData/${loadedData.keyFirebase}`)).then(() => closeModal());
+    remove(ref(db, `inputData/${loadedData.keyFirebase}`)).then(() => {
+      closeModal();
+      window.location.reload(false);
+    });
   }
 
   return (
@@ -58,9 +61,8 @@ const InvoiceDetails = ({closeModal, loadedData, total, setPaidButton, statusPen
           <header className="header">
             <div className="header__box-1">
               <p>Status</p>
-                {/* {statusPending ? <StatusButton setPaid={true}/> : <StatusButton setPaid={false} />} */}
-                {loadedData.status === 'pending' && statusPending ? <StatusButton setPaid={true}/> : <StatusButton setPaid={false}/>}
-
+              {/* {loadedData.status === 'pending' && statusPending ? <StatusButton status='pending'/> : <StatusButton status='paid'/>} */}
+              {loadedData.status === 'pending' && statusPending ? <StatusButton status='pending'/> : (loadedData.status === 'draft') ? <StatusButton status='draft'/> : <StatusButton status='paid'/>}
             </div>
             <div className="header__box-2">
               <button className="header__button-edit">Edit</button>
@@ -114,7 +116,7 @@ const InvoiceDetails = ({closeModal, loadedData, total, setPaidButton, statusPen
             {<InvoiceDetailsLiItem arrNum={loadedData.liInfoArray} /> }
             <div className="main-details__amount-due">
               <p>Amount Due</p>
-              <p className="main-details__amount-due-total">{total}</p>
+              <p className="main-details__amount-due-total">£ {total}</p>
             </div>
           </main>
         </div>

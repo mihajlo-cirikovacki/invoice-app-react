@@ -1,8 +1,19 @@
+@use '../utilities' as *;
 
 .main {
   display: flex;
   justify-content: center;
   padding-top: 7.2rem;
+
+   // Tab-port 900
+   @include respond(tab-port) {
+    padding-top: 0;
+  };
+
+  // Tab-port 700
+  @include respond(tab-port-sm) {
+    padding-top: 3.2rem;
+  };
 
   &__empty-container {
     display: flex;
@@ -34,6 +45,35 @@
   display: flex;
   flex-direction: column;
   gap: 6.5rem;
+
+  // Desktop-sm 1400
+  @include respond(desktop-sm-4) {
+    width: 60%;
+  };
+  // Desktop-sm 1300
+  @include respond(desktop-sm-3) {
+    width: 70%;
+  };
+  // Desktop-sm 1100
+  @include respond(desktop-sm-1) {
+    width: 75%;
+  };
+  // Desktop-sm 1000
+  @include respond(desktop-sm) {
+    width: 80%;
+  };
+  // Tab-port 900
+  @include respond(tab-port) {
+    width: 87.50%;
+  };
+  // Tab-port 800
+  @include respond(tab-port-sm-2) {
+    width: 97%;
+  };
+  // Tab-port 700
+  @include respond(tab-port-sm) {
+    width: 32.7rem;
+  };
 
   &__cards {
     display: flex;

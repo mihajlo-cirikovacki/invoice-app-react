@@ -1,5 +1,5 @@
 
-import { useEffect, useReducer, useState } from 'react';
+import { useReducer, useState } from 'react';
 // Import Style:
 import '../styles/components/NewInvoiceModal.scss';
 import NewInvoiceModalLiItem from './NewInvoiceModalLiItem';
@@ -48,15 +48,13 @@ const NewInvoiceModal = ({closeModal}) => {
   
   // === Reducer:
   const [inputObj, dispatch] = useReducer(reducer, initialState);
-  //  console.log(inputObj, 'Reducer obj'); //🔥 Ceo inputObj saljem
-
+  
   // === Li items Inf.
   const [liInfoArray, setLiInfoArray] = useState([]);
-  // console.log(liInfoArray, 'Array za slanje')
-
+  
   // === Status:
   const [status, setDraft] = useState('pending');
-
+  
   // === Functons:
   const setLiInfoArrayHandler = function(data) {
     if (Object.values(data).every(value => value !== '' && value !== 0)) {
@@ -76,7 +74,6 @@ const NewInvoiceModal = ({closeModal}) => {
   // === Validate state:
   const validateState = function() {
     const values = Object.values(inputObj);
-    // console.log(inputObj)
     // Check inputs and PriceItem Arr:
     if (values.includes('') || liPriceItem.length === 0 ) return true
       else return false;
@@ -95,23 +92,25 @@ const NewInvoiceModal = ({closeModal}) => {
   }
 
   const sendDraftToFirebase = function() {
-    setDraft('draft');
+    setDraft('draft'); // Ne radi?
     sendDataToFirebase(); 
   }
-  
+
   // ===== Post data on Firebase:
   function sendDataToFirebase() {
     fetch(
       'https://invoice-app-react-a9ade-default-rtdb.firebaseio.com/inputData.json',
       {
         method: 'POST',
-        body: JSON.stringify({...inputObj, liInfoArray, clientId: `${generateString(2, words)}${generateString(4, num)}`, status: status,}),
+        body: JSON.stringify({...inputObj, liInfoArray, clientId: `${generateString(2, words)}${generateString(4, num)}`, status}),
         headers: {
           'Content-type': 'application/json'
         }
       }
     ).then(() => {
       closeModal();
+      // Refresh page:
+      window.location.reload(false);
     })
   }
 
@@ -214,7 +213,7 @@ const NewInvoiceModal = ({closeModal}) => {
         <section className="new-invoice__btns-container">
           <button className="new-invoice__btn-submit new-invoice__btn-submit--discard" onClick={closeModal}>Discard</button>
           <div>
-            <button className="new-invoice__btn-submit new-invoice__btn-submit--draft" onClick={sendDraftToFirebase}>Save as Draft</button>
+            <button className="new-invoice__btn-submit new-invoice__btn-submit--draft" onClick={sendDraftToFirebase}>Save as Draft</button>       
             {/* Check inputs: */}
             <button className={validateState() ? "new-invoice__btn-submit new-invoice__btn-submit--send disabled" 
               : "new-invoice__btn-submit new-invoice__btn-submit--send"} onClick={validateState() ? null : sendDataToFirebase}>

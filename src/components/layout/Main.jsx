@@ -22,7 +22,7 @@ const getDueDate = function(date, paymentTerm) {
     month: 'short',
     day:'2-digit',
   }
-  console.log(paymentTerm)
+   
   const formatedDueDate = new Intl.DateTimeFormat(local, options).format(dueDate);
   return formatedDueDate;
 }

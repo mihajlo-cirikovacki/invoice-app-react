@@ -14,9 +14,8 @@
   // === New Invoice Modal:
   &__modal {
     position: absolute;
-    top: 0;
+    top: 0rem;
     left: 10.3rem;
-    width: 42.77%;
     padding: 5.6rem;
     min-height: 100vh;
     background-color: var(--background-modal);
@@ -24,7 +23,12 @@
     display: flex;
     flex-direction: column;
     gap: 4.8rem;
-   
+
+    // Tab-port 1000
+    @include respond(desktop-sm) {
+      top: 8rem;
+      left: 0; 
+    };
   }
 
   &__heading  {

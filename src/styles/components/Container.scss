@@ -5,6 +5,11 @@
   display: grid;
   grid-template-columns: 10.3rem 1fr;
   background-color: var(--background);
+
+  // Desktop-sm 1000
+  @include respond(desktop-sm) {
+    grid-template-columns: 1fr;
+  };
 }
 
 

@@ -10,8 +10,13 @@
 // BREAKPONTS 
 $breakpoints: (
   'phone': '37.5em', // 600px
+  'tab-port-sm': '43.75em', // 700px
+  'tab-port-sm-2': '50em', //  800px
   'tab-port': '56.25em', //  900px
-  'tab-land': '75em', // 1200 px
+  'desktop-sm': '62.5em', // 1000px
+  'desktop-sm-1': '68.75em', // 1100px
+  'desktop-sm-3': '81.25em', // 1300px
+  'desktop-sm-4': '87.5em', // 1400px
 );
 
 @mixin respond($size) {

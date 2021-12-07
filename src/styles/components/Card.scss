@@ -4,8 +4,7 @@
 .card {
   display: flex;
   justify-content: space-between;
-  gap: 7.3rem;
-  padding: 1.6rem 3.2rem;
+  padding: 1.6rem 1.8rem;
   border-radius: .8rem;
   background-color: var(--background-card);
   font-size: 1.2rem;
@@ -13,6 +12,16 @@
   letter-spacing: -0.025rem;
   color: var(--blue-light2);
   box-shadow: 0 1rem 1rem -1rem rgba(72, 84, 159, 0.100397);
+
+  // tab-port-sm 700
+  @include respond(tab-port-sm) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: start;
+    column-gap: 4rem;
+    padding: 2.4rem;
+  };
+
 
   // == Box 1.
   &__box-1 {
@@ -42,11 +51,24 @@
   &__box-2 {
     display: flex;
     align-items: center;
-    // gap: 4rem;
+    
+    // tab-port-sm 700
+    @include respond(tab-port-sm) {
+      justify-content: space-between;
+    };
 
     & > div {
       display: flex;
     }
+  }
+
+  &__box-1, 
+  &__box-2 {
+    // tab-port-sm 700
+    @include respond(tab-port-sm) {
+      flex-direction: column;
+      align-items: flex-start;
+    };
   }
 
   &__total {

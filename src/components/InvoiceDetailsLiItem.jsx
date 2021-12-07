@@ -1,6 +1,5 @@
 
 const InvoiceDetailsLiItem = ({arrNum}) => {
-  console.log(arrNum)
 
   if(arrNum) {
     return (
@@ -14,12 +13,12 @@ const InvoiceDetailsLiItem = ({arrNum}) => {
           {arrNum.map((data, index) => <p key={index}>{data.qty}</p>)}
         </div>
         <div className="main-details__calculated-box-3">
-          <p>Price</p>
-          {arrNum.map((data, index) => <p key={index}>{data.price}</p>)} 
+          <p>Price</p>  
+          {arrNum.map((data, index) => <p key={index}>£ {data.price}</p>)} 
         </div>
         <div className="main-details__calculated-box-4">
-          <p>Total</p>
-          {arrNum.map((data, index) => <p className="bold-text2" key={index}>{data.total}</p>)}
+          <p>Total</p>     
+          {arrNum.map((data, index) => <p className="bold-text2" key={index}>£ {data.total}</p>)}   
         </div>
       </div>
     )

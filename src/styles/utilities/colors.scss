@@ -24,15 +24,16 @@
   --orange: #FF8F00;
   --orange-light-op: rgba(255, 143, 0, .1);
 
+
  // Background:
  --background: #f8f8fb;
  --background-card: #fff;
  --background-aside: #373B53;
  --background-modal: #fff;
  --background-btn-discard: #F9FAFE;
+ --background-btn-draft-op: rgba(55, 59, 83, .1);
  --btn-discard: #7E88C3;
- --background-btn-draft: #373B53;
- --btn-draft: #888EB0; 
+ --btn-draft: #373B53; 
  --white: #fff;
 }
 
@@ -53,6 +54,7 @@
   --background-input-color: #1E2139;
   --btn-draft: #DFE3FA; 
   --input-border: #1E2139;
+  --background-btn-draft-op:  rgba(55, 59, 83, .5);
 }
 
 

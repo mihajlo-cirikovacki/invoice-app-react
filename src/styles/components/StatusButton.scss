@@ -10,14 +10,17 @@
   
   &--pending {
     background-color: var(--orange-light-op);
-    // opacity: 0.6;
     color: var(--orange);
   }
 
   &--paid {
     background-color: var(--green-light-op);
-    opacity: 0.6;
     color: var(--green);
+  }
+
+  &--draft {
+    background-color: var(--background-btn-draft-op);
+    color: var(--btn-draft);
   }
 
   &-circle {
@@ -33,7 +36,10 @@
     }
     &--paid {
       background-color: var(--green);
-      
+    }
+
+    &--draft {
+      background-color: var(--btn-draft);
     }
   }
 }
