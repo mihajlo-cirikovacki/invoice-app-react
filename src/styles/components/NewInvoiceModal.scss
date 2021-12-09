@@ -29,6 +29,12 @@
       top: 8rem;
       left: 0; 
     };
+
+    // tab-port-sm 700
+    @include respond(tab-port-sm) {
+      padding: 3.2rem 2.4rem;
+      width: 100%;
+    }
   }
 
   &__heading  {
@@ -79,8 +85,30 @@
     flex-direction: column;
     gap: 2.4rem;
 
+    & > div {
+      width: 100%;
+    }
+
     &--horizontal {
       flex-direction: unset;
+
+      // tab-port-sm 700
+      @include respond(tab-port-sm) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      & > div:nth-of-type(3) {
+        grid-column: 1 / span 2;
+      }
+
+      &-full-with-mob {
+        // tab-port-sm 700
+        @include respond(tab-port-sm) {
+          display: grid;
+          grid-template-columns: 1fr;
+        }
+      }
     }
   }
 
@@ -95,14 +123,8 @@
     letter-spacing: -0.025rem;
     background-color: var(--background-input-color);
     color: var(--blue-dark-2);
+    width: 100%;
     
-    &--small {
-      width: 15.2rem;
-    }
-
-    &--medium {
-      width: 24rem;
-    }
 
     &--description::placeholder {
       letter-spacing: -0.025rem;
@@ -120,25 +142,42 @@
       &-qty {
         padding: 1.6rem;
         width: 4.6rem;
+         // Phone 600
+        @include respond(phone) {
+          width: 5rem;
+        }
       }
 
       &-price{
         padding: 1.6rem 2rem 1.6rem;
         width: 10rem;
+
+        // Phone 600
+        @include respond(phone) {
+          width: 5rem;
+        }
       }
     }
 
     &--total {
       padding: 1.6rem 1rem;
-      width: 8rem;
+      width: 10rem;
       border: none;
+      
+      // Phone 600
+      @include respond(phone) {
+        width: 5rem;
+      }
+
+      &:focus {
+        outline: none;
+      }
     }
   }
 
   // === Select:
   &__select {
     padding: 1.6rem 0 1.6rem 2rem;
-    width: 24rem;
     border: 1px solid var(--input-border);
     background-color: var(--background-input-color);
     appearance: none;
@@ -155,14 +194,26 @@
   &__titles {
     display: flex;
     justify-content: space-between;
-    padding-right: 9rem;
+    
+    &-box {
+      display: flex;
+      padding-right: 10rem;
+      gap: 4rem;
 
-    & p:nth-of-type(2) {
-      margin-left: 6rem;
-    }
+      // Phone 600
+      @include respond(phone) {
+        padding-right: 4rem;
+        gap: 3rem;
+      }
 
-    & p:nth-of-type(3) {
-      margin-left: -4rem;
+      & p:nth-of-type(2) {
+        margin-right: 4rem;
+
+        // Phone 600
+        @include respond(phone) {
+          margin-right: .3rem;
+        }
+      }
     }
   }
 
@@ -182,10 +233,22 @@
     margin-top: .2rem;
   }
 
-  &__price-item {
+  &__price-item { 
     display: flex;
     align-items: center;
     gap: 1.6rem;
+
+    // Phone 600
+    @include respond(phone) {
+      gap: 1rem;
+    }
+
+    & > input {
+       // Phone 600
+      @include respond(phone) {
+        padding: 1.6rem .3rem;
+      }
+    }
   }
 
   &__total {

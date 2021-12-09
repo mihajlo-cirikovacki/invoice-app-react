@@ -8,10 +8,16 @@
   width: 92.85%;
   height: 92.85%;
   z-index: 5555;
+  overflow-y: scroll;
 
   // Desktop-sm 1000
   @include respond(desktop-sm) {
     width: 100%;
+  };
+
+  // Tab-port 700
+  @include respond(tab-port-sm) {
+    min-height: 100vh;
   };
 }
 
@@ -67,6 +73,7 @@
   // Tab-port 700
   @include respond(tab-port-sm) {
     width: 100%;
+    padding-top: 8rem;
   }; 
 }
 
@@ -106,12 +113,19 @@
     flex-direction: column;
     gap: 2rem;
     align-items: center;
+    padding: 2.2rem 2rem;
   };
 
   &__box-1 {
     display: flex;
     align-items: center;
     gap: 1.6rem;
+
+    // Tab-port 700
+    @include respond(tab-port-sm) {
+      width: 100%;
+      justify-content: space-between;
+    }; 
 
     & > div {
       display: flex;
@@ -127,7 +141,6 @@
 
   // Status:
   &__status {
-    
     color: var(--orange-light);
   }
 
@@ -183,12 +196,23 @@
     padding: 3.2rem;
   };
 
+  // Tab-port 700
+  @include respond(tab-port-sm) {
+    padding: 2.2rem 2rem;
+  }; 
+
   // ==== INFO:
   &__info {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     row-gap: 2.1rem;
     line-height: 1.8rem;
+
+    // Tab-port 700
+    @include respond(tab-port-sm) {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 1rem;
+    };
 
     // Boxes:
     &-box-1 {
@@ -199,20 +223,46 @@
       grid-column: 4;
       grid-row: 1;
       text-align: right;
+
+      // Tab-port 700
+      @include respond(tab-port-sm) {
+        grid-column: 1;
+        grid-row: 2;
+        text-align: left;
+      };
     }
     &-box-3 {
       grid-column: 1;
       grid-row: 2;
+
+       // Tab-port 700
+       @include respond(tab-port-sm) {
+        grid-column: 1;
+        grid-row: 3;
+      };
     }
     &-box-4 {
       grid-column: 2;
       grid-row: 2;
       justify-self: center;
+
+      // Tab-port 700
+      @include respond(tab-port-sm) {
+        grid-row: 3;
+        justify-self: start;
+      };
     }
     &-box-5 {
       grid-column: 3 / span 2;
       grid-row: 2;
       justify-self: center;
+
+      // Tab-port 700
+      @include respond(tab-port-sm) {
+        grid-column: 1 / span 2;
+        grid-row: 4;
+        justify-self: start; 
+      };
     }
 
     &-hastag {
@@ -247,6 +297,21 @@
     margin-top: 4.5rem;
     border-radius: .8rem;
     row-gap: 4rem;
+
+    // Tab-port 700
+    @include respond(tab-port-sm) {
+      grid-template-columns: max-content repeat(3, 1fr);
+      padding:  2rem 0;
+      row-gap: 2.4rem;
+      column-gap: .1rem;
+      align-items: center;
+      justify-content: center
+    };
+
+    // Phone 600
+    @include respond(phone) {
+      grid-template-columns: max-content min-content repeat(2, 1fr);
+    };
     
     &-box-2,
     &-box-3,
@@ -255,13 +320,29 @@
       display: flex;
       flex-direction: column;
       gap: 3.2rem;
+
+      // Tab-port 700
+      @include respond(tab-port-sm) {
+        gap: 2.4rem;
+      };
     }
 
     &-box-1 {
       display: flex;
       flex-direction: column;
       gap: 3.2rem;
+
+      // Tab-port 700
+      @include respond(tab-port-sm) {
+        gap: 2.4rem;
+      };
     }
+
+    &-box-2 {
+      justify-self: center;
+      text-align: center;
+    }
+
   }
 
   // ==== Amount Due:
@@ -274,10 +355,20 @@
     align-items: center;
     justify-content: space-between;
 
+    // Tab-port 700
+    @include respond(tab-port-sm) {
+      padding: 2.4rem 1.2rem;
+    };
+
     &-total {
       font-size: 2.4rem;
       font-weight: 700;
       letter-spacing: -0.05rem;
+
+      // Tab-port 700
+      @include respond(tab-port-sm) {
+        font-size: 2rem;
+      };
     }
   }
 }

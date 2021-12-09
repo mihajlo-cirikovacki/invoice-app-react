@@ -1,4 +1,4 @@
-
+@use '../utilities' as *;
 
 .status__button {
   padding: 1.3rem 1.7rem;
@@ -7,6 +7,11 @@
   font-weight: 700;
   margin-right: 2rem;
   text-align: center;
+
+  // Tab-port 700
+  @include respond(tab-port-sm) {
+    margin-right: 0;
+  };
   
   &--pending {
     background-color: var(--orange-light-op);

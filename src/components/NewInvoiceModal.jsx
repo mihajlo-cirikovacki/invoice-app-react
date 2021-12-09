@@ -173,7 +173,7 @@ const NewInvoiceModal = ({closeModal}) => {
           </div>
         </section>
         <section className="new-invoice__container">
-          <div className="new-invoice__input-box new-invoice__input-box--horizontal">
+          <div className="new-invoice__input-box new-invoice__input-box--horizontal new-invoice__input-box--horizontal-full-with-mob">
             <div className="flex-column">
               <label htmlFor="date" className="new-invoice__label">Invoice Date</label>
               <input type="date" id="date" name="clientInvoiceDate" className="new-invoice__input new-invoice__input--medium" onChange={onChange} />
@@ -199,9 +199,11 @@ const NewInvoiceModal = ({closeModal}) => {
           <h3 className="new-invoice__heading-3">Item List</h3>
           <div className="new-invoice__titles new-invoice__label">
             <p>Item Name</p>
-            <p>Qty.</p>
-            <p>Price</p>
-            <p>Total</p>
+            <div className="new-invoice__titles-box">
+              <p>Qty.</p>
+              <p>Price</p>
+              <p>Total</p>
+            </div>
           </div>
           <ul className="new-invoice__price-list">
             {liPriceItem}
