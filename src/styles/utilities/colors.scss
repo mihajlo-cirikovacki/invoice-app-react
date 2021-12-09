@@ -1,17 +1,18 @@
 
 :root {
   // === Primery ===
-  --primary: #7C5DFA;
-  --primary-Light: #9277FF;
+  --primary: #7C5DFA; 
+  --primary-Light: #9277FF; 
 
-  --blue-dark: #1E2139;
-  --blue-dark-2: #0C0E16;
+  --blue-dark: #1E2139; 
+  --blue-dark-2: #0C0E16; 
   --blue-dark-3: #141625;
   --blue-dark-4: #252945;
   --blue-light: #F9FAFE;
   --blue-light2: #7E88C3;
 
-  --proba: #F9FAFE;
+  --background-input-color: #fff;
+  --input-border: #DFE3FA;
   
   --gray: #373B53;
   --gray2: #888EB0;
@@ -20,21 +21,41 @@
   --green: #33D69F;
   --green-light-op: rgba(51, 214, 159, .1);
   --red: #EC5757;
-  --orange-light: #FF8F00;
+  --orange: #FF8F00;
   --orange-light-op: rgba(255, 143, 0, .1);
+
 
  // Background:
  --background: #f8f8fb;
-
+ --background-card: #fff;
+ --background-aside: #373B53;
+ --background-modal: #fff;
+ --background-btn-discard: #F9FAFE;
+ --background-btn-draft-op: rgba(55, 59, 83, .1);
+ --btn-discard: #7E88C3;
+ --btn-draft: #373B53; 
  --white: #fff;
 }
 
+// === Dark Mode:
+:root.dark-mode {
+  --background: #141625;
+  --background-card: #1e2139;
+  --background-aside: #1E2139;
+  --background-modal: #141625;
 
-
-
-
-
-
+  --blue-dark-2: #fff;
+  --gray2: #DFE3FA;
+  --orange-light-op: rgba(255, 143, 0, .2);
+  --green-light-op: rgba(51, 214, 159, .2);
+  --blue-light2: #DFE3FA;
+  --blue-light: #252945;
+  --gray: #0C0E16;
+  --background-input-color: #1E2139;
+  --btn-draft: #DFE3FA; 
+  --input-border: #1E2139;
+  --background-btn-draft-op:  rgba(55, 59, 83, .5);
+}
 
 
 

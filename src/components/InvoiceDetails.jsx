@@ -1,5 +1,5 @@
-import { useState } from 'react/cjs/react.development';
-import db from '../db';
+import { useState } from 'react';
+import {db, ref, remove} from '../db';
 // Import Styles:
 import '../styles/components/InvoiceDetails.scss';
 
@@ -9,8 +9,10 @@ import StatusButton from './StatusButton';
 
 // ===== Helper funck.
 const formatDate = function(date) {
+  // Check for date:
+  if(!date) return;
+  
   const dateForFormat = new Date(date);
-
   const options = {
     year: 'numeric',
     month: 'short',
@@ -24,7 +26,7 @@ const formatDate = function(date) {
 
 // Invoice Details Page:
 const InvoiceDetails = ({closeModal, loadedData, total, setPaidButton, statusPending}) => {
-  // === Context:
+  // === State:
   const [deleteModalOpen, setDeleteModal] = useState(false);
  
   //  === Delete Modal:
@@ -38,10 +40,13 @@ const InvoiceDetails = ({closeModal, loadedData, total, setPaidButton, statusPen
 
   // === Delete invoice:
   const deleteInvoice = function() {
-    db.database().ref(`inputData/${loadedData.keyFirebse}`).remove();
+    // Remove from Firebase:
+    remove(ref(db, `inputData/${loadedData.keyFirebase}`)).then(() => {
+      closeModal();
+      window.location.reload(false);
+    });
   }
 
-  
   return (
     <section>
     <section className='invoice-modal'>
@@ -56,8 +61,8 @@ const InvoiceDetails = ({closeModal, loadedData, total, setPaidButton, statusPen
           <header className="header">
             <div className="header__box-1">
               <p>Status</p>
-              {/* <StatusButton /> */}
-                {statusPending ? <StatusButton setPaid={true}/> : <StatusButton setPaid={false}/>}
+              {/* {loadedData.status === 'pending' && statusPending ? <StatusButton status='pending'/> : <StatusButton status='paid'/>} */}
+              {loadedData.status === 'pending' && statusPending ? <StatusButton status='pending'/> : (loadedData.status === 'draft') ? <StatusButton status='draft'/> : <StatusButton status='paid'/>}
             </div>
             <div className="header__box-2">
               <button className="header__button-edit">Edit</button>
@@ -111,13 +116,13 @@ const InvoiceDetails = ({closeModal, loadedData, total, setPaidButton, statusPen
             {<InvoiceDetailsLiItem arrNum={loadedData.liInfoArray} /> }
             <div className="main-details__amount-due">
               <p>Amount Due</p>
-              <p className="main-details__amount-due-total">{total}</p>
+              <p className="main-details__amount-due-total">£ {total}</p>
             </div>
           </main>
         </div>
       </section>
     </section>
-      {deleteModalOpen && <ConfirmDeleteModal closeModal={closeDeleteModal} />}
+      {deleteModalOpen && <ConfirmDeleteModal clientId={loadedData.clientId} closeModal={closeDeleteModal} deleteInvoice={deleteInvoice} />}
     </section>
   );
 }

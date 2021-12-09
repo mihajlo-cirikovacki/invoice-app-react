@@ -21,7 +21,7 @@ const Filter = () => {
         <div className='filter__options'>
           <div className='filter__option'>
             <span className="filter__checkbox"></span>
-            <span className="filter__check-title">Paid</span>
+            <span className="filter__check-title">Draft</span>
           </div>
           <div className='filter__option'>
             <span className="filter__checkbox"></span>

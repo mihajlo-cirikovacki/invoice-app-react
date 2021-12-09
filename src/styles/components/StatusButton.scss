@@ -1,21 +1,31 @@
-
+@use '../utilities' as *;
 
 .status__button {
-  padding: 1.3rem 2.05rem;
+  padding: 1.3rem 1.7rem;
+  width: 10.4rem;
   border-radius: .6rem;
   font-weight: 700;
   margin-right: 2rem;
+  text-align: center;
+
+  // Tab-port 700
+  @include respond(tab-port-sm) {
+    margin-right: 0;
+  };
   
   &--pending {
     background-color: var(--orange-light-op);
-    opacity: 0.6;
     color: var(--orange);
   }
 
   &--paid {
     background-color: var(--green-light-op);
-    opacity: 0.6;
     color: var(--green);
+  }
+
+  &--draft {
+    background-color: var(--background-btn-draft-op);
+    color: var(--btn-draft);
   }
 
   &-circle {
@@ -26,12 +36,15 @@
     margin-right: .5rem;
     
     &--pending {
-      background-color: var(--orange-light);
+      background-color: var(--orange);
       
     }
     &--paid {
       background-color: var(--green);
-      
+    }
+
+    &--draft {
+      background-color: var(--btn-draft);
     }
   }
 }

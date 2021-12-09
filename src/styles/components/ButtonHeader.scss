@@ -8,9 +8,15 @@
   padding: .8rem;
   padding-right: 1.5rem;
   border-radius: 2.4rem;
-  background-color: var(--primary-Light);
+  background-color: var(--primary);
   color: var(--white);
   letter-spacing: -.025rem;
+
+  // Tab-port 700
+  @include respond(tab-port-sm) {
+    padding: .6rem;
+    padding-right: 1.2rem;
+  };
   
   &__plus-box {
     padding: 1.12rem;

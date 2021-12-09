@@ -7,12 +7,12 @@ import '../../styles/components/Header.scss';
 const Header = ({totalCards}) => {
   
   return (
-    <header className='header'>
-      <div className='header__box--1'>
-        <h1 className='header__heading'>Invoices</h1>
-        <span className='header__total'>There are {totalCards} total invoices</span>
+    <header className='main-header'>
+      <div className='main-header__box--1'>
+        <h1 className='main-header__heading'>Invoices</h1>
+        <span className='main-header__total'>There are {totalCards} total invoices</span>
       </div>
-      <div className='header__box--2'>
+      <div className='main-header__box--2'>
         <Filter />
         <ButtonHeader />
       </div>
